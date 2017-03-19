@@ -1,2 +1,4 @@
-﻿  VIZS2.vcxproj -> C:\Users\Marti\Documents\Visual Studio 2015\Projects\VIZS2\x64\Debug\VIZS2.exe
+﻿  Source.cpp
+c:\users\marti\documents\visual studio 2015\projects\vizs2\vizs2\source.cpp(12): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  VIZS2.vcxproj -> C:\Users\Marti\Documents\Visual Studio 2015\Projects\VIZS2\x64\Debug\VIZS2.exe
   VIZS2.vcxproj -> C:\Users\Marti\Documents\Visual Studio 2015\Projects\VIZS2\x64\Debug\VIZS2.pdb (Full PDB)
