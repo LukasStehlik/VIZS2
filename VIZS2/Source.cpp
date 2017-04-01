@@ -16,22 +16,23 @@ using namespace std;
 
 /// Global variables
 void Predspacovanie(Mat src, Mat *dst);
-void Hough_Transform(Mat source, vector<Vec2f> *lines, double rhoRes, double thetaRes, uchar treshold);
+void HoughTransform_Lines(Mat source, vector<Vec2f> *lines, double rhoRes, double thetaRes, uchar treshold);
 
 int main(int, char*argv)
 {
-	Mat src = imread("../../OpenCVTest/DataLow/frame120.png");
+	Mat src = imread("../../OpenCVTest/DataLow/frame123.png");
 	if (src.empty())
 	{
 		printf("can not open");
 		return -1;
 	}
+	imshow("Povodny", src);
 	Mat preproc;
 	Predspacovanie(src, &preproc);
 	imshow("Predspracovanie", preproc);
 
 	vector<Vec2f> lines;
-	Hough_Transform(preproc, &lines, 1, 1, 80);
+	HoughTransform_Lines(preproc, &lines, 2, 1, 75);
 
 	printf("Pocet ciar=%lu", (unsigned long)lines.size());
 	for (size_t i = 0; i < lines.size(); i++)
@@ -46,11 +47,11 @@ int main(int, char*argv)
 		pt2.y = cvRound(y0 - 1000 * (a));
 		line(src, pt1, pt2, Scalar(0, 0, 255), 3, CV_AA);
 	}
-
+	imshow("Lines", src);
 	imshow("Lines", src);
 
 	waitKey(0);
-
+	
 	return 0;
 }
 
@@ -61,7 +62,7 @@ void Predspacovanie(Mat src, Mat *dst)
 	Canny(AFilter, *dst, 50, 200, 3);
 }
 
-void Hough_Transform(Mat source, vector<Vec2f> *lines, double rhoRes, double thetaRes, uchar treshold) // uhly v stupòoch
+void HoughTransform_Lines(Mat source, vector<Vec2f> *lines, double rhoRes, double thetaRes, uchar treshold) // uhly v stupòoch
 {
 	uint w = source.cols;
 	uint h = source.rows;
